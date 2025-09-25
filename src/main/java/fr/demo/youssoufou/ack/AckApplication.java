@@ -6,21 +6,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 
+@RefreshScope
 @SpringBootApplication
 public class AckApplication {
 	private static final Logger log = LoggerFactory.getLogger(AckApplication.class);
-
-	@Value("${profil}")
-	String env;
-
 	public static void main(String[] args) {
-		var rs = SpringApplication.run(AckApplication.class, args);
+		SpringApplication.run(AckApplication.class, args);
 	}
-
-	@PostConstruct
-	public void test(){
-		log.info(env);
-	}
-
 }
